@@ -42,6 +42,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth', function(){
         Route::match(['get','post','delete'],'/edit/{page}',['uses'=>'PagesEditController@execute','as'=>'pagesEdit']);
     }]);
 
+    //admin/portfolio
     Route::group(['prefix'=>'portfolios'],function(){
 
         //admin/portfolio
@@ -49,7 +50,19 @@ Route::group(['prefix'=>'admin','middleware'=>'auth', function(){
 
         //admin/portfolio/add
         Route::match(['get','post'],'/add',['uses'=>'PortfolioAddController@execute','as'=>'portfolioAdd']);
-        //admin/edit/2
+        //admin/portfolio/edit/2
         Route::match(['get','post','delete'],'/edit/{portfolio}',['uses'=>'PortfolioEditController@execute','as'=>'portfolioEdit']);
+    });
+
+    //admin/services
+    Route::group(['prefix'=>'services'],function(){
+
+        //admin/service
+        Route::get('/',['uses'=>'ServiceController@execute','as'=>'services']);
+
+        //admin/service/add
+        Route::match(['get','post'],'/add',['uses'=>'ServiceAddController@execute','as'=>'serviceAdd']);
+        //admin/service/edit/2
+        Route::match(['get','post','delete'],'/edit/{service}',['uses'=>'ServiceEditController@execute','as'=>'serviceEdit']);
     });
 }]);
