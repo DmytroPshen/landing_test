@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+Route::group(['middleware'=>'web'], function (){
+    Route::match(['get','post'],'/',['uses'=>'IndexController@execute','as'=>'home']);
 });
